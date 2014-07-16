@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test</title>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.min.js"></script>
+    </head>
+
+    <body>
+        <div id="myGraph" style="height: 500px; width: 500px;"></div>
+
+        <% if (foo) { %>
+            <div>we saw foo</div>
+        <% } %>
+
+        <script>
+            var serverDataset = <%- JSON.stringify(graphData) %>;
+            var nonServerDataset = {
+                label: 'foo',
+                data: [
+                    [0,3],
+                    [1,2],
+                    [2,1],
+                    [3,0.5]
+                ],
+                bars: { show: true }
+            };
+
+            var plot = $.plot("#myGraph", [serverDataset, nonServerDataset]);
+
+        </script>
+    </body>
+
+</html>
